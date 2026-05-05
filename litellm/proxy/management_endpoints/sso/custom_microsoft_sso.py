@@ -17,8 +17,10 @@ import os
 from typing import List, Optional, Union
 
 import pydantic
-from fastapi_sso.sso.base import DiscoveryDocument
-from fastapi_sso.sso.microsoft import MicrosoftSSO
+try:
+    from fastapi_sso.sso.base import DiscoveryDocument
+except ImportError:
+    DiscoveryDocument = Nonefrom fastapi_sso.sso.microsoft import MicrosoftSSO
 
 from litellm._logging import verbose_proxy_logger
 
