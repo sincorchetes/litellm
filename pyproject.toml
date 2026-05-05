@@ -202,35 +202,12 @@ healthcheck = [
     "pyyaml==6.0.3",
 ]
 
+[tool.setuptools]
+packages = ["litellm"]
+
 [build-system]
-requires = ["uv_build==0.10.7"]
-build-backend = "uv_build"
-
-[tool.uv]
-default-groups = ["dev"]
-required-version = "==0.10.9"
-exclude-newer = "3 days"
-
-[tool.uv.sources]
-litellm-proxy-extras = { workspace = true }
-litellm-enterprise = { workspace = true }
-
-[tool.uv.workspace]
-members = ["enterprise", "litellm-proxy-extras"]
-
-[tool.uv.build-backend]
-module-root = ""
-source-exclude = [
-    "litellm/proxy/enterprise",
-    "**/__pycache__",
-    "**/__pycache__/**",
-    "**/.mypy_cache",
-    "**/.mypy_cache/**",
-    "**/.pytest_cache",
-    "**/.pytest_cache/**",
-    "**/.ruff_cache",
-    "**/.ruff_cache/**",
-]
+requires = ["setuptools", "setuptools-scm"]
+build-backend = "setuptools.build_meta"
 
 [tool.isort]
 profile = "black"
